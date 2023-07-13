@@ -1,59 +1,42 @@
-# Name（リポジトリ/プロジェクト/OSSなどの名前）
+# 簡易的な掲示板
 
-簡易的な掲示板の作成
+木曜1, 2限「システム開発」授業の実習用です。
 
-基礎的なWebサーバーサイド技術について理解し、一人で何もない状態からWebサービスを作成してインターネットに公開できるt 
+## 以下を学習するために掲示板を作成します。
+・基礎的なWebサーバーサイド技術について理解し，説明できる。
+・ 一人で何もない状態からWebサービスを制作しインターネットに公開できる。
 
-# DEMO
-
-"hoge"の魅力が直感的に伝えわるデモ動画や図解を載せる
-
-# Features
-
-"hoge"のセールスポイントや差別化などを説明する
-
-# Requirement
-
-"hoge"を動かすのに必要なライブラリなどを列挙する
-
-* huga 3.5.2
-* hogehuga 1.0.2
-
-# Installation
-
-Requirementで列挙したライブラリなどのインストール方法を説明する
-
-```bash
-pip install huga_package
+## 使い方
+### 起動
+本リポジトリのプロジェクトルートで、以下のコマンドを実行すると各コンテナが起動します
+```sh
+docker compose up
 ```
 
-# Usage
-
-DEMOの実行方法など、"hoge"の基本的な使い方を説明する
-
-```bash
-git clone https://github.com/hoge/~
-cd examples
-python demo.py
+### テーブル作成
+各コンテナが起動している状態で、以下のコマンドを叩くことにより、MySQLクライアントを起動します。
+```sh
+docker compose exec mysql mysql techc
 ```
 
-# Note
+以下のSQLを実行し、テーブルを作成します。
+```sh 
+CREATE TABLE `bbs_entries` (
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `body` TEXT NOT NULL,
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    'image_filename' TEXT DEFAULT NULL;
+);
+```
 
-注意点などがあれば書く
+### ブラウザからアクセス
+以下のURLで、ブラウザから掲示板にアクセスできます。
+[http://{EC2インスタンスのIPアドレス}/bbsimagetest.html](http://{EC2インスタンスのIPアドレス}/bbsimagetest.html)
 
-# Author
-
+## 作成者
+ 
 作成情報を列挙する
-
-* 作成者
-* 所属
-* E-mail
-
-# License
-ライセンスを明示する
-
-"hoge" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
-
-社内向けなら社外秘であることを明示してる
-
-"hoge" is Confidential.
+ 
+* 津澤友喜
+* 東京デザインテクノロジーセンター専門学校3年プログラマー専攻
+* tomoki.tsuzawa@gmail.com
