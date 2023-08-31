@@ -1,0 +1,17 @@
+@media (max-width: 660px){
+  /*画面が660px以下の時に適用されるスタイル*/
+  image{
+    width: 450px;
+    }
+  *{
+ 
+  }
+}
+
+.wrapper{
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  }
+
+
